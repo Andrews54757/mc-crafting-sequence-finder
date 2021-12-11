@@ -1,0 +1,1 @@
+# Sequence finder for crafter

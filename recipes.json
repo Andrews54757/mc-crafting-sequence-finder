@@ -1,0 +1,122 @@
+[
+    {
+        "name": "acacia_fence",
+        "table": "121121000"
+    },
+    {
+        "name": "acacia_sign",
+        "table": "111111020"
+    },
+    {
+        "name": "activator_rail",
+        "table": "121131121"
+    },
+    {
+        "name": "anvil",
+        "table": "111020222"
+    },
+    {
+        "name": "armor_stand",
+        "table": "111010121"
+    },
+    {
+        "name": "barrel",
+        "table": "121101121"
+    },
+    {
+        "name": "beacon",
+        "table": "111121333"
+    },
+    {
+        "name": "beehive",
+        "table": "111222111"
+    },
+    {
+        "name": "black_bed",
+        "table": "111222000"
+    },
+    {
+        "name": "black_carpet_from_white_carpet",
+        "table": "111121111"
+    },
+    {
+        "name": "black_concrete_powder",
+        "table": "122223333"
+    },
+    {
+        "name": "bow",
+        "table": "012102012"
+    },
+    {
+        "name": "campfire",
+        "table": "010121333"
+    },
+    {
+        "name": "cartography_table",
+        "table": "110220220"
+    },
+    {
+        "name": "crossbow",
+        "table": "121343010"
+    },
+    {
+        "name": "daylight_detector",
+        "table": "111222333"
+    },
+    {
+        "name": "detector_rail",
+        "table": "101121131"
+    },
+    {
+        "name": "dropper",
+        "table": "111101121"
+    },
+    {
+        "name": "enchanting_table",
+        "table": "010232333"
+    },
+    {
+        "name": "end_crystal",
+        "table": "111121131"
+    },
+    {
+        "name": "hopper",
+        "table": "101121010"
+    },
+    {
+        "name": "netherite_ingot",
+        "table": "111122220"
+    },
+    {
+        "name": "observer",
+        "table": "111223111"
+    },
+    {
+        "name": "piston",
+        "table": "111232242"
+    },
+    {
+        "name": "rail",
+        "table": "101121101"
+    },
+    {
+        "name": "repeater",
+        "table": "121333000"
+    },
+    {
+        "name": "scaffolding",
+        "table": "121101101"
+    },
+    {
+        "name": "sea_lantern",
+        "table": "121222121"
+    },
+    {
+        "name": "shield",
+        "table": "121111010"
+    },
+    {
+        "name": "tnt",
+        "table": "121212121"
+    }
+]
