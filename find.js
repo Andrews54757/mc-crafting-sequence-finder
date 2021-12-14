@@ -32,40 +32,30 @@ let result = [];
 
 
 
-permutations.forEach((sequence) => {
+permutations.forEach((sequence, index) => {
     var counts = [];
 
     for (let i = 0; i < data.length; i++) {
-        let queue = fillQueue(data[i].table, sequence);
-        let result = simulate(data[i].table, queue);
-        if (!result.success) return;
-        counts.push(result.count);
-    }
 
+        for (let j = 0; j < 4; j++) {
+            let queue = fillQueueReal(data[i].table, sequence, j);
+
+            let result = simulate(data[i].table, queue);
+           
+            if (!result.success) {
+                return;
+            }
+            counts.push(result.count);
+        }
+    }
     result.push({
         sequence: sequence,
         counts: counts
     })
-
-   // console.log(`Found valid sequence ${sequence.join(", ")}`);
+    console.log(`[${index + 1}/${permutations.length}] Found valid sequence ${sequence.join(", ")}`);
 })
 console.log(`Found ${result.length} valid sequences!`)
-function fillQueue(table, sequence) {
-    const queue = [];
-    sequence.forEach((index) => {
-        const item = table[index];
-        if (item === 0) return;
 
-        for (let i = 0; i < 7; i++) {
-            queue.push({
-                item: item,
-                count: 64
-            });
-        }
-    })
-
-    return queue;
-}
 function simulate(table, queue) {
     let playerSlotCount = 0;
     const playerSlots = [0, 0, 0, 0, 0];
@@ -81,7 +71,7 @@ function simulate(table, queue) {
     while (true) {
 
 
-        
+
 
         // Fill player slots
         for (let i = playerSlotCount; i < maxSlots; i++) {
@@ -178,92 +168,35 @@ result.forEach((res) => {
 
 })
 
-const boxCombinations = [
-    [7, 7, 7, 6],
-    [7, 7, 6, 7],
-    [7, 6, 7, 7],
-    [6, 7, 7, 7]
-]
-function calculateStackSequences(count) {
 
-    const stackSequences = [];
-    let len = Math.pow(4, count);
-    for (let i = 0; i < len; i++) {
-        let boxsequences = (i + len).toString(4).split("").map(o => parseInt(o));
-        let sequence = [];
-        for (let j = 1; j < boxsequences.length; j++) {
-            sequence.push(boxCombinations[boxsequences[j]]);
-        }
-        stackSequences.push(sequence);
-    }
-    return stackSequences;
-}
-
-
-function fillQueueReal(table, sequence, stackSequence) {
+function fillQueueReal(table, sequence, startIndex) {
     const queue = [];
+    let id = startIndex;
+    let subarrs = [[], [], [], []];
+    sequence.forEach((index) => {
+        const item = table[index];
+        if (item === 0) return;
+        for (let j = 0; j < 27; j++) {
+            let currId = id++;
+            subarrs[currId % 4].push({
+                item: item,
+                count: 64
+            });
+        }
+    })
+
     for (let i = 0; i < 4; i++) {
-        let k = 0;
-        sequence.forEach((index) => {
-            const item = table[index];
-            if (item === 0) return;
-
-            if (!stackSequence[k]) {
-                console.log(stackSequence, k,i,index, sequence, table)
-            }
-            for (let j = 0; j < stackSequence[k][i]; j++) {
-                queue.push({
-                    item: item,
-                    count: 64
-                });
-            }
-            k++;
-        })
+        queue.push(...subarrs[i]);
     }
-
     return queue;
 }
+
+
+
+
 result.sort((a, b) => {
     return a.total - b.total;
 })
-for (let i = 0; i < data.length; i++) {
-    let count = 0;
-    data[i].table.forEach((index) => {
-        if (index !== 0) count++;
-    });
-    data[i].stackSequences = calculateStackSequences(count);
-}
-var toRemove = 0;
-
-result.every((res) => {
-    var counts = [];
-
-   
-    console.log(`Testing sequence ${res.sequence.join("")}`);
-    for (let i = 0; i < data.length; i++) {
-        
-        let stackSequences = data[i].stackSequences;
-        for (let j = 0; j < stackSequences.length; j++) {
-            let queue = fillQueueReal(data[i].table, res.sequence, stackSequences[j]);
-
-            let result = simulate(data[i].table, queue);
-            if (!result.success) {
-              
-                console.log(`Failed sequence ${res.sequence.join("")} with stack sequence ${JSON.stringify(stackSequences[j])} with recipe ${data[i].name}`);
-                toRemove++
-                return true;
-            }
-        }
-    }
-
-    console.log(`Success sequence ${res.sequence.join("")}`);
-
-    return false;
-});
-
-if (toRemove > 0) {
-    result.splice(0, toRemove);
-}
 
 result.forEach((res) => {
     res.sequence = res.sequence.join("");
