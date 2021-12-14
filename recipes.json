@@ -56,6 +56,10 @@
         "table": "110220220"
     },
     {
+        "name": "clock",
+        "table": "010121010"
+    },
+    {
         "name": "crossbow",
         "table": "121343010"
     },
@@ -66,6 +70,14 @@
     {
         "name": "detector_rail",
         "table": "101121131"
+    },
+    {
+        "name": "diamond_axe",
+        "table": "110120020"
+    },
+    {
+        "name": "diamond_pickaxe",
+        "table": "111020020"
     },
     {
         "name": "dropper",
@@ -80,8 +92,28 @@
         "table": "111121131"
     },
     {
+        "name": "fishing_rod",
+        "table": "001012102"
+    },
+    {
+        "name": "grindstone",
+        "table": "121303000"
+    },
+    {
+        "name": "honey_bottle",
+        "table": "122220000"
+    },
+    {
         "name": "hopper",
         "table": "101121010"
+    },
+    {
+        "name": "lead",
+        "table": "110120001"
+    },
+    {
+        "name": "lectern",
+        "table": "111020010"
     },
     {
         "name": "netherite_ingot",

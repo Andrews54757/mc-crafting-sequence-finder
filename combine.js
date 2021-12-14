@@ -30,7 +30,7 @@ dt = dt.filter((d)=>{
                 ingreds++;
             })
         })
-        if (ingreds <= 5) {
+        if (ingreds <= 4) {
             console.log("Shaped fittable " + d.name)
             return false;
         }
@@ -39,7 +39,7 @@ dt = dt.filter((d)=>{
             return false;
         }
     } else if (d.type == types[1]) {
-        if (d.ingredients.length <= 5) {
+        if (d.ingredients.length <= 4) {
             console.log("Shapeless fittable " + d.name)
             return false;
         }
@@ -59,7 +59,7 @@ dt = dt.filter((d)=>{
     return true;
 })
 
-const blacklist = ["cake", "dispenser", "beetroot_soup"]
+const blacklist = ["cake", "dispenser", "beetroot_soup", "rabbit_stew_from_brown_mushroom", "rabbit_stew_from_red_mushroom"]
 
 dt = dt.filter((d)=>{
     return !blacklist.includes(d.name)
