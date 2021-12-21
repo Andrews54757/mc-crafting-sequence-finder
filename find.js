@@ -35,14 +35,16 @@ let result = [];
 permutations.forEach((sequence, index) => {
     var counts = [];
 
-    for (let i = 0; i < data.length; i++) {
 
-        for (let j = 0; j < 4; j++) {
+    for (let j = 0; j < 4; j++) {
+        for (let i = 0; i < data.length; i++) {
+
             let queue = fillQueueReal(data[i].table, sequence, j);
 
             let result = simulate(data[i].table, queue);
-           
+
             if (!result.success) {
+                console.log(`[${index + 1}/${permutations.length}] Failed sequence ${sequence.join(", ")}`);
                 return;
             }
             counts.push(result.count);
